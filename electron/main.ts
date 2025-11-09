@@ -4,14 +4,14 @@ import path from 'node:path';
 import * as fs from 'fs/promises';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-process.env.APP_ROOT = path.join(__dirname, '../..');
+process.env.APP_ROOT = path.join(__dirname, '..');
 
 export const MAIN_DIST = path.join(process.env.APP_ROOT, 'dist-electron');
 export const RENDERER_DIST = path.join(process.env.APP_ROOT, 'dist');
 export const VITE_DEV_SERVER_URL = process.env.VITE_DEV_SERVER_URL;
 
-const indexHtml = path.join(RENDERER_DIST, 'index.html'); // should the index.html be in the dist?
-const preload = path.join(__dirname, '../preload/index.mjs');
+const indexHtml = path.join(RENDERER_DIST, 'index.html');
+const preload = path.join(MAIN_DIST, 'preload.mjs');
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
